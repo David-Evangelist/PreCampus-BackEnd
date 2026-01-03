@@ -1,27 +1,38 @@
-import { IBaseUser } from "./IBaseUser";
+import { Types } from "mongoose";
+import { Role } from "../constants/roles";
 
-export interface IStudent extends IBaseUser {
+export interface IStudent {
+  _id?: Types.ObjectId;
+
   fullName: string;
-  birthDate: Date;
+  email: string;
+  password: string;
+
+  birthDate?: Date;
   phone?: string;
 
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
+  address?: {
+    street?: string;
+    city?: string;
+    state?: string;
+    cep?: string;
   };
 
-  monthlyIncome: number;
+  monthlyIncome?: number;
 
-  guardian: {
-    fullName: string;
-    relationship: string;
-    cpf: string;
-    email: string;
-    address: string;
+  guardian?: {
+    fullName?: string;
+    relationship?: string;
+    cpf?: string;
+    email?: string;
+    address?: string;
   };
 
-  interestedCourses: string[];
-  interestedUniversities: string[];
+  interestedCourses?: string[];
+  interestedUniversities?: string[];
+
+  role: Role;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
