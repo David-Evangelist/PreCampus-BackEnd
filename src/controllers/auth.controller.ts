@@ -26,8 +26,8 @@ export async function loginStudent(req: Request, res: Response) {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     // return res.json({ message: "Login realizado com sucesso" });
@@ -64,8 +64,8 @@ export async function loginInstitution(req: Request, res: Response) {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     return res.json({ message: "Login realizado com sucesso" });
