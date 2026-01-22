@@ -18,14 +18,14 @@ export async function registerStudent(req: Request, res: Response) {
     interestedUniversities,
   } = req.body;
 
-  // 1️⃣ Validação básica
+  // 1Validação básica
   if (!fullName || !email || !password) {
     return res.status(400).json({
       message: "Nome completo, email e senha são obrigatórios",
     });
   }
 
-  // 2️⃣ Verificar duplicidade
+  // Verificar duplicidade
   const studentExists = await Student.findOne({ email });
 
   if (studentExists) {
@@ -34,10 +34,10 @@ export async function registerStudent(req: Request, res: Response) {
     });
   }
 
-  // 3️⃣ Hash da senha
+  // Hash da senha
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // 4️⃣ Criação do aluno
+  // Criação do aluno
   const student = await Student.create({
     fullName,
     email,
@@ -52,7 +52,7 @@ export async function registerStudent(req: Request, res: Response) {
     role: ROLES.STUDENT,
   });
 
-  // 5️⃣ Retorno seguro
+  // Retorno seguro
   return res.status(201).json({
     id: student._id,
     fullName: student.fullName,

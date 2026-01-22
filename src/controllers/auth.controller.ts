@@ -24,6 +24,11 @@ export async function loginStudent(req: Request, res: Response) {
   try {
     const token = await authenticateUser({ user: student, password });
 
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   sameSite: "lax",
+    //   secure: false,
+    // });
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "none",
@@ -62,6 +67,11 @@ export async function loginInstitution(req: Request, res: Response) {
       password,
     });
 
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   sameSite: "lax",
+    //   secure: false,
+    // });
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "none",
@@ -75,31 +85,13 @@ export async function loginInstitution(req: Request, res: Response) {
 }
 
 // ------------------------------
-// RETORNA OS DADOS DO PERFIL DE USUÁRIO
-
-export async function profile(req: Request, res: Response) {
-  const { userId, role } = req.user!;
-
-  switch (role) {
-    case "student":
-      const student = await Student.findById(userId).select("-password");
-      return res.json(student);
-      break;
-    case "school":
-      const school = await School.findById(userId).select("-password");
-      return res.json(school);
-      break;
-    case "university":
-      const university = await University.findById(userId).select("-password");
-      return res.json(university);
-    default:
-      return res.status(400).json({ message: "Perfil não encontrado" });
-  }
-}
-
-// ------------------------------
 // LOGOUT
 export function logout(req: Request, res: Response) {
+  // res.clearCookie("token", {
+  //   httpOnly: true,
+  //   sameSite: "lax",
+  //   secure: false,
+  // });
   res.clearCookie("token", {
     httpOnly: true,
     sameSite: "none",
