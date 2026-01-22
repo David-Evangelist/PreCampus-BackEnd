@@ -1,5 +1,7 @@
 import { Types } from "mongoose";
 import { Role } from "../constants/roles";
+import { Guardian } from "./Guardian";
+import { Address } from "./Address";
 
 export interface IStudent {
   _id?: Types.ObjectId;
@@ -8,25 +10,14 @@ export interface IStudent {
   email: string;
   password: string;
 
-  birthDate?: Date;
-  phone?: string;
+  birthDate: Date;
+  phone: string;
 
-  address?: {
-    street?: string;
-    city?: string;
-    state?: string;
-    cep?: string;
-  };
+  address: Address;
 
-  monthlyIncome?: number;
+  monthlyIncome: number;
 
-  guardian?: {
-    fullName?: string;
-    relationship?: string;
-    cpf?: string;
-    email?: string;
-    address?: string;
-  };
+  guardian: Guardian;
 
   interestedCourses?: string[];
   interestedUniversities?: string[];

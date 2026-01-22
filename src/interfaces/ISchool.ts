@@ -1,4 +1,5 @@
 import { Role } from "../constants/roles";
+import { Address } from "./Address";
 
 export interface ISchool {
   corporateName: string; // Razão Social
@@ -7,12 +8,7 @@ export interface ISchool {
   password: string;
   phone: string;
 
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    cep: string;
-  };
+  address: Address;
 
   classes: {
     firstYear: number; // 1º ano

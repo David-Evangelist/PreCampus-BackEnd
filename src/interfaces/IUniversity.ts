@@ -1,5 +1,15 @@
 import { Role } from "../constants/roles";
+import { Address } from "./Address";
 
+export interface Course {
+  name: string;
+  description: string;
+}
+
+export interface SocialLink {
+  name: string;
+  url: string;
+}
 export interface IUniversity {
   corporateName: string; // Razão Social
   cnpj: string;
@@ -9,24 +19,12 @@ export interface IUniversity {
 
   description: string;
 
-  courses: {
-    name: string;
-    description: string;
-  }[];
+  courses: Course[];
 
   website?: string;
-  socialLinks?: {
-    instagram?: string;
-    linkedin?: string;
-    facebook?: string;
-  };
+  socialLinks?: SocialLink;
 
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    cep: string;
-  };
+  address: Address;
 
   role: Role;
 
