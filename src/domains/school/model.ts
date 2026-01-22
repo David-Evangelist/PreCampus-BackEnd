@@ -28,6 +28,7 @@ const SchoolSchema = new Schema<ISchool>(
     },
     address: {
       street: { type: String, required: true },
+      number: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
       cep: { type: String, required: true },

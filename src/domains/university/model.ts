@@ -39,13 +39,15 @@ const UniversitySchema = new Schema<IUniversity>(
     website: {
       type: String,
     },
-    socialLinks: {
-      instagram: String,
-      linkedin: String,
-      facebook: String,
-    },
+    socialLinks: [
+      {
+        name: { type: String },
+        url: { type: String },
+      },
+    ],
     address: {
       street: { type: String, required: true },
+      number: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
       cep: { type: String, required: true },
@@ -58,7 +60,7 @@ const UniversitySchema = new Schema<IUniversity>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const University = model<IUniversity>("University", UniversitySchema);

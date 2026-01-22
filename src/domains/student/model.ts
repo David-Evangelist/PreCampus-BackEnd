@@ -12,6 +12,7 @@ const StudentSchema = new Schema<IStudent>(
 
     address: {
       street: String,
+      number: String,
       city: String,
       state: String,
       cep: String,
@@ -22,9 +23,16 @@ const StudentSchema = new Schema<IStudent>(
     guardian: {
       fullName: String,
       relationship: String,
+      otherRelationship: String,
       cpf: String,
       email: String,
-      address: String,
+      address: {
+        street: String,
+        number: String,
+        city: String,
+        state: String,
+        cep: String,
+      },
     },
 
     interestedCourses: {
